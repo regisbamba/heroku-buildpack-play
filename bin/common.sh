@@ -38,8 +38,8 @@ download_play_official() {
   local playVersion=${1}
   local playTarFile=${2}
   local playZipFile="play-${playVersion}.zip"
-  #local playUrl="https://github.com/playframework/play1/releases/download/${playVersion}/${playZipFile}"
-  local playUrl="https://downloads.typesafe.com/play/${playVersion}/${playZipFile}"
+  local playUrl="https://github.com/playframework/play1/releases/download/${playVersion}/${playZipFile}"
+  #local playUrl="https://downloads.typesafe.com/play/${playVersion}/${playZipFile}"
 
   status=$(curl --retry 3 --silent --head -w %{http_code} -L ${playUrl} -o /dev/null)
   if [ "$status" != "200" ]; then
@@ -47,8 +47,8 @@ download_play_official() {
 Please check that the version ${playVersion} is correct in your conf/dependencies.yml"
     exit 1
   else
-    echo "Downloading ${playZipFile} from https://downloads.typesafe.com" | indent
-    # echo "Downloading ${playZipFile} from https://github.com/playframework/play1/releases/download/" | indent
+    #echo "Downloading ${playZipFile} from https://downloads.typesafe.com" | indent
+    echo "Downloading ${playZipFile} from https://github.com/playframework/play1/releases/download/" | indent
     curl --retry 3 -s -O -L ${playUrl}
   fi
 
